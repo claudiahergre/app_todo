@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#anotador {
+    background-color: pink;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+#prioridad {
+    margin: 10px;
+}
+
+#filtro {
+    background-color: black;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+#filtro .selector {
+    height: 20px;
+}
+
+#filtro :is(.selector, div) {
+    margin: 5px;
+}
+
+#btn {
+    width: 70px;
+}
+
+article {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px dotted gray;
+}
+
+.btn {
+    width: 90px;
+}
+
+.urgente {
+    background-color: palevioletred;
+}
+
+.diaria {
+    background-color: palegoldenrod;
+}
+
+.mensual {
+    background-color: palegreen;
+}
+
+
+
+
+footer {
+    background-color: black;
+    color: pink;
+    padding: 10px;
+    text-align: center;
+}
+
+.enhorabuena {
+    text-align: center;
+    padding: 20px;
+}
