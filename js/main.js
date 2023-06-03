@@ -31,7 +31,6 @@ function deleteItemArray(pTitulo, pList) {
     if (elementoBorrar !== -1) {
         pList.splice(elementoBorrar, 1)
     }
-    printTareas(tareas, sectionPendientes)
 }
 
 
@@ -43,6 +42,7 @@ function deleteItem(event) {
     articleDelete.parentNode.removeChild(articleDelete)
     //borrar del array
     deleteItemArray(titulo, tareas) //creo la funcion arriba
+    printTareas(tareas, sectionPendientes)
 }
 
 
@@ -91,7 +91,7 @@ function getDataForm(event) {
             event.target.reset()
         } else {
             alert(guardado)
-            event.target.titulo.style.border = '3px solid red'
+            event.target.reset()
         }
     } else {
         alert('Pero tendrás que decirme la tarea y seleccionar una prioridad para que pueda guardarlo, Mari')
