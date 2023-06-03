@@ -49,6 +49,7 @@ article {
 
 .btn {
     width: 90px;
+    border: 1px solid gray;
 }
 
 .urgente {

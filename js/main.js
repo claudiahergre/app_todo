@@ -36,6 +36,8 @@ function printOneTarea(pTarea, pDom) {
 
     pBoton.classList.add('btn')
     pBoton.textContent = 'Eliminar'
+    pBoton.dataset.titulo = pTarea.titulo
+    pBoton.addEventListener('click', deleteItem)
 
     article.append(pTitulo, pBoton)
     pDom.append(article)
