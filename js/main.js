@@ -24,6 +24,30 @@ function saveTarea(pList, pTarea) {
 const sectionPendientes = document.querySelector('#pendientes')
 
 
+
+//borrar del array
+function deleteItemArray(pTitulo, pList) {
+    let elementoBorrar = pList.findIndex(tarea => tarea.titulo === pTitulo)
+    if (elementoBorrar !== -1) {
+        pList.splice(elementoBorrar, 1)
+    }
+    printTareas(tareas, sectionPendientes)
+}
+
+
+//funcion borrar
+//borrar del dom
+function deleteItem(event) {
+    let titulo = event.target.dataset.titulo
+    const articleDelete = event.target.parentNode //un solo "quien es tu padre", porque solo tengo que subir un nodo
+    articleDelete.parentNode.removeChild(articleDelete)
+    //borrar del array
+    deleteItemArray(titulo, tareas) //creo la funcion arriba
+}
+
+
+
+
 //crear el article
 function printOneTarea(pTarea, pDom) {
     const article = document.createElement('article')
