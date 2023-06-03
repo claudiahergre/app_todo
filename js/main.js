@@ -54,6 +54,8 @@ function printOneTarea(pTarea, pDom) {
     const pTitulo = document.createElement('p')
     const pBoton = document.createElement('button')
 
+
+    article.className = 'rounded mb-2'
     article.classList.add(pTarea.prioridad)
 
     pTitulo.textContent = pTarea.titulo
@@ -105,7 +107,7 @@ function printTareas(pList, pDom) {
     if (pList.length !== 0) {
         pList.forEach(tarea => printOneTarea(tarea, pDom))
     } else {
-        pDom.innerHTML = '<p class="enhorabuena">LO TIENES TODO HECHO. PUEDES IR A VER NETFLIX</p>'
+        pDom.innerHTML = '<div class="lead bg-body-secondary rounded mt-2 mb-2 pt-4 pb-2 text-center"><p class="enhorabuena">Lo tienes todo hecho. Puedes ir a ver Netflix.</p></div>' //vaya chorizo te he metío
     }
 }
 
