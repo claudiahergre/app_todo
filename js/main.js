@@ -165,10 +165,18 @@ selectPrioridad.addEventListener('change', getPrioridad);
 
 const inputTitulo = document.querySelector('#buscadorTarea');
 
+inputTitulo.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        getTarea(event);
+    }
+});
+
 function getTarea(event) {
-    let palabraBuscar = event.target.value;
-    let listaFiltrada = filterByWord(tareas, palabraBuscar);
-    printTareas(listaFiltrada, sectionPendientes);
+    if (event.key === 'Enter') {
+        let palabraBuscar = event.target.value;
+        let listaFiltrada = filterByWord(tareas, palabraBuscar);
+        printTareas(listaFiltrada, sectionPendientes);
+    }
 }
 
 inputTitulo.addEventListener('input', getTarea);
