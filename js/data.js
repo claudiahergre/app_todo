@@ -1,16 +1,16 @@
 const tareas = [
-    {
-        titulo: 'Estudiar Javascript',
-        prioridad: 'urgente'
-    },
-    {
-        titulo: 'dormir',
-        prioridad: 'diaria'
-    },
-    {
-        titulo: 'salir a comer',
-        prioridad: 'mensual'
-    },
+    /*  {
+         titulo: 'Estudiar Javascript',
+         prioridad: 'urgente'
+     },
+     {
+         titulo: 'dormir',
+         prioridad: 'diaria'
+     },
+     {
+         titulo: 'salir a comer',
+         prioridad: 'mensual'
+     }, */
 ]
 
 
