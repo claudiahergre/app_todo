@@ -168,6 +168,7 @@ const inputTitulo = document.querySelector('#buscadorTarea');
 inputTitulo.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         getTarea(event);
+        inputTitulo.value = "";
     }
 });
 
