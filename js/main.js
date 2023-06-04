@@ -130,9 +130,6 @@ function getDataForm(event) {
     }
 }
 
-
-
-
 //pintar tareas
 function printTareas(pList, pDom) {
     pDom.innerHTML = ''
