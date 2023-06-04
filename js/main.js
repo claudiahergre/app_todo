@@ -3,6 +3,9 @@ const registerForm = document.querySelector('#anotador')
 registerForm.addEventListener('submit', getDataForm)
 
 function saveTarea(pList, pTarea) {
+    if (pList.length === 0) {
+        sectionPendientes.innerHTML = ''
+    }
     let duplicado = pList.findIndex(tarea => tarea.titulo === pTarea.titulo)
     if (duplicado === -1) { //si no encuentra
         //puedo hacer push
