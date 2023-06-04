@@ -73,36 +73,62 @@ function printOneTarea(pTarea, pDom) {
 }
 
 
-function comprobarForm(pForm) {
-    return pForm.titulo.value !== '' && pForm.prioridad.value !== ''
+function comprobarForm(pForm, tareas) {
+    const titulo = pForm.titulo.value;
+    const prioridad = pForm.prioridad.value;
+
+    // Verificar campos vacíos
+    if (titulo === '' || prioridad === '') {
+        return false;
+    }
+
+    // Verificar tarea repetida
+    const tareaRepetida = tareas.find(tarea => tarea.titulo === titulo);
+    if (tareaRepetida) {
+        return false;
+    }
+
+    return true;
 }
 
-function getDataForm(event) {
-    //es formulario, por lo tanto:
-    event.preventDefault()
 
-    if (comprobarForm(event.target)) {
+function getDataForm(event) {
+    event.preventDefault();
+
+    const mensajeErrorVacio = 'Los campos no pueden estar vacíos, ni las tareas repetidas.';
+    const mensajeErrorRepetido = 'Tarea repetida.'; // no funciona
+
+    const inputTitulo = document.querySelector('#tarea');
+    const mensajeTarea = document.querySelector('#mensajeTarea');
+    const inputPrioridad = document.querySelector('#prioridad');
+
+    if (comprobarForm(event.target, tareas)) {
         const newTarea = {
             titulo: event.target.titulo.value,
             prioridad: event.target.prioridad.value
         }
 
-        //guardar la tarea en el array
-        let guardado = saveTarea(tareas, newTarea)
-        //imprimirlo
+        let guardado = saveTarea(tareas, newTarea);
+
         if (guardado === 'tarea guardada') {
-            printOneTarea(newTarea, sectionPendientes)
-            //reseteo del formulario
-            event.target.reset()
+            printOneTarea(newTarea, sectionPendientes);
+            event.target.reset();
+
+            inputTitulo.classList = 'form-control';
+            inputPrioridad.classList = 'form-control';
+            mensajeTarea.textContent = '';
         } else {
-            alert(guardado)
-            event.target.reset()
+            mensajeTarea.textContent = mensajeErrorRepetido; //esto no funciona
+            event.target.reset();
         }
+
     } else {
-        alert('Pero tendrás que decirme la tarea y seleccionar una prioridad para que pueda guardarlo, Mari')
+        mensajeTarea.textContent = mensajeErrorVacio;
+        inputTitulo.classList = 'form-control is-invalid';
+        inputPrioridad.classList = 'form-control is-invalid';
+        event.target.reset();
     }
 }
-
 
 //pintar tareas
 function printTareas(pList, pDom) {
