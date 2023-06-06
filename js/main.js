@@ -79,30 +79,31 @@ function comprobarForm(pForm, tareas) {
 
     // Verificar campos vacíos
     if (titulo === '' || prioridad === '') {
-        return false;
+        return 'vacio';
     }
 
     // Verificar tarea repetida
     const tareaRepetida = tareas.find(tarea => tarea.titulo === titulo);
     if (tareaRepetida) {
-        return false;
+        return 'repetido';
     }
 
-    return true;
+    return 'correcto';
 }
 
 
 function getDataForm(event) {
     event.preventDefault();
 
-    const mensajeErrorVacio = 'Los campos no pueden estar vacíos, ni las tareas repetidas.';
-    const mensajeErrorRepetido = 'Tarea repetida.'; // no funciona
+    const mensajeErrorVacio = 'Los campos no pueden estar vacíos! Escribe una tarea Y selecciona una prioridad';
+    const mensajeErrorRepetido = 'Tarea repetida.';
 
     const inputTitulo = document.querySelector('#tarea');
     const mensajeTarea = document.querySelector('#mensajeTarea');
     const inputPrioridad = document.querySelector('#prioridad');
 
-    if (comprobarForm(event.target, tareas)) {
+    const validacion = comprobarForm(event.target, tareas)
+    if (validacion === 'correcto') {
         const newTarea = {
             titulo: event.target.titulo.value,
             prioridad: event.target.prioridad.value
@@ -117,13 +118,15 @@ function getDataForm(event) {
             inputTitulo.classList = 'form-control';
             inputPrioridad.classList = 'form-control';
             mensajeTarea.textContent = '';
-        } else {
-            mensajeTarea.textContent = mensajeErrorRepetido; //esto no funciona
-            event.target.reset();
         }
 
     } else {
-        mensajeTarea.textContent = mensajeErrorVacio;
+        if (validacion === 'repetido') {
+            mensajeTarea.textContent = mensajeErrorRepetido;
+        } else {
+            mensajeTarea.textContent = mensajeErrorVacio;
+        }
+
         inputTitulo.classList = 'form-control is-invalid';
         inputPrioridad.classList = 'form-control is-invalid';
         event.target.reset();
@@ -165,7 +168,7 @@ selectPrioridad.addEventListener('change', getPrioridad);
 
 const inputTitulo = document.querySelector('#buscadorTarea');
 
-inputTitulo.addEventListener('keypress', function (event) {
+inputTitulo.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         getTarea(event);
         inputTitulo.value = "";
