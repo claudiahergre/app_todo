@@ -182,5 +182,3 @@ function getTarea(event) {
         printTareas(listaFiltrada, sectionPendientes);
     }
 }
-
-inputTitulo.addEventListener('input', getTarea);
