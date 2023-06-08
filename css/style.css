@@ -1,0 +1,23 @@
+article {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px
+}
+
+.btn {
+    border: 1px solid gray;
+}
+
+.urgente {
+    background-color: palevioletred;
+}
+
+.diaria {
+    background-color: palegoldenrod;
+}
+
+.mensual {
+    background-color: palegreen;
+}
